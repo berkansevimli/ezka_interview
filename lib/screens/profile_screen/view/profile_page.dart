@@ -2,11 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../../components/coustom_bottom_nav_bar.dart';
 import '../../../../enums.dart';
-
 import '../../../size_config.dart';
 import '../model/MyUser.dart';
 import '../widgets/profile_pic.dart';
@@ -81,8 +78,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 : SizedBox(),
           );
   }
-
-  ///Widget buildAbout(bool isSelected) =>
 
   Widget buildName(bool isCurrent) => ListTile(
       leading: SizedBox(

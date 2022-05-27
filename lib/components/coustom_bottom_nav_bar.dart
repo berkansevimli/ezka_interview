@@ -1,5 +1,6 @@
 import 'package:ezka_interview/screens/map/current_location.dart';
 import 'package:ezka_interview/screens/profile_screen/model/fetch_datas.dart';
+import 'package:ezka_interview/screens/search/search_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -58,7 +59,12 @@ class CustomBottomNavBar extends StatelessWidget {
                         ? kPrimaryColor
                         : inActiveIconColor,
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (builder) => SearchScreen()),
+                        (route) => false);
+                  }),
               IconButton(
                 icon: Icon(
                   Icons.map,

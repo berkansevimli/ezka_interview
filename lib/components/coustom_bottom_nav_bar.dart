@@ -1,3 +1,4 @@
+import 'package:ezka_interview/screens/map/current_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -39,19 +40,19 @@ class CustomBottomNavBar extends StatelessWidget {
                         : inActiveIconColor,
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (builder) => HomeScreen()));
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (builder) => HomeScreen()),
+                        (route) => false);
                   }),
               IconButton(
                   icon: Icon(
-                    Icons.calendar_month,
+                    Icons.search,
                     color: MenuState.search == selectedMenu
                         ? kPrimaryColor
                         : inActiveIconColor,
                   ),
-                  onPressed: () {
-                   
-                  }),
+                  onPressed: () {}),
               IconButton(
                 icon: Icon(
                   Icons.map,
@@ -60,10 +61,13 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
                 onPressed: () {
-                 
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => CurrentLocationScreen()),
+                      (route) => false);
                 },
               ),
-              
               IconButton(
                   icon: SvgPicture.asset(
                     "assets/icons/User Icon.svg",

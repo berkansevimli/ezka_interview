@@ -1,3 +1,5 @@
+import 'package:ezka_interview/components/coustom_bottom_nav_bar.dart';
+import 'package:ezka_interview/enums.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,6 +12,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Home Screen'),),
+
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
 
     );
 

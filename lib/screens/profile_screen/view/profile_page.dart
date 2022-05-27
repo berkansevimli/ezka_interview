@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ezka_interview/AuthScreens/sign_in/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,17 +18,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  int? followers;
-
-  int? follows;
-
-  int? countPos;
-  int? checkins;
-  bool isLoading = false;
-  bool isLiked = false;
-  // List<Posts> post = [];
-
-  bool isLoading2 = false;
   CollectionReference mRef = FirebaseFirestore.instance.collection('Users');
 
   @override
@@ -36,47 +26,54 @@ class _ProfilePageState extends State<ProfilePage> {
     FirebaseAuth mAuth = FirebaseAuth.instance;
     String uid = mAuth.currentUser!.uid;
     bool isCurrent = uid == widget.myUser.uid;
-    return isLoading
-        ? Center(
-            child: CircularProgressIndicator(),
-          )
-        : Scaffold(
-            appBar: AppBar(
-              title: Text(
-                "Profile",
-              ),
-              elevation: 0.5,
-            ),
-            body: Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 12,
-                      ),
-                      buildName(isCurrent),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      widget.myUser.bio == 'default'
-                          ? SizedBox()
-                          : buildAbout(widget.myUser.bio!),
-                      Divider(),
-                    ],
-                  ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Profile",
+        ),
+        elevation: 0.5,
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await mAuth.signOut();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (builder) => SignInScreen()),
+                    (route) => false);
+              },
+              icon: Icon(Icons.logout))
+        ],
+      ),
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 12,
                 ),
-              ),
+                buildName(isCurrent),
+                SizedBox(
+                  height: 16,
+                ),
+                widget.myUser.bio == 'default'
+                    ? SizedBox()
+                    : buildAbout(widget.myUser.bio!),
+                Divider(),
+              ],
             ),
-            bottomNavigationBar: isCurrent
-                ? CustomBottomNavBar(
-                    selectedMenu: MenuState.profile,
-                  )
-                : SizedBox(),
-          );
+          ),
+        ),
+      ),
+      bottomNavigationBar: isCurrent
+          ? CustomBottomNavBar(
+              selectedMenu: MenuState.profile,
+            )
+          : SizedBox(),
+    );
   }
 
   Widget buildName(bool isCurrent) => ListTile(

@@ -1,4 +1,6 @@
 import 'package:ezka_interview/screens/map/current_location.dart';
+import 'package:ezka_interview/screens/profile_screen/model/fetch_datas.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -7,7 +9,7 @@ import '../enums.dart';
 import '../screens/home_screen.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({
+  CustomBottomNavBar({
     Key? key,
     required this.selectedMenu,
   }) : super(key: key);
@@ -16,7 +18,11 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth firebaseAuth;
+
     final Color inActiveIconColor = Color(0xFFB6B6B6);
+    firebaseAuth = FirebaseAuth.instance;
+    String uid = firebaseAuth.currentUser!.uid;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 14),
@@ -76,11 +82,13 @@ class CustomBottomNavBar extends StatelessWidget {
                         : inActiveIconColor,
                   ),
                   onPressed: () {
-                    // Navigator.pushAndRemoveUntil(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (builder) => ProfileScreen()),
-                    //     (route) => false);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => GetUserInfos(
+                                  userID: uid,
+                                )),
+                        (route) => false);
                   }),
             ],
           )),

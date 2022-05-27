@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "553751780130",
+    "project_id": "ezka-39431",
+    "storage_bucket": "ezka-39431.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553751780130:android:f63e46f7482c4578dde37b",
+        "android_client_info": {
+          "package_name": "com.ezkayazilim.ezka_interview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553751780130-87dkimdu3kq1ftd2qg1l40s4ao6teiat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3LZISU777_meeAOl6zC5YziHF6maY2QM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553751780130-87dkimdu3kq1ftd2qg1l40s4ao6teiat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ezka_interview/constants.dart';
+import 'package:ezka_interview/screens/messages/Screens/fetch_receiver.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -65,6 +67,17 @@ class SearchModel extends StatelessWidget {
             return ListTile(
               title: Text(data['firstname'] + ' ' + data['lastname']),
               subtitle: Text(data['address']),
+              trailing: TextButton.icon(
+                  onPressed: () {
+                    print(data['uid']);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) =>
+                                FetchReceiverInfos(receiverID: data['uid'])));
+                  },
+                  icon: Icon(CupertinoIcons.chat_bubble_2),
+                  label: Text('Message')),
             );
           }).toList(),
         );

@@ -33,15 +33,17 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         elevation: 0.5,
         actions: [
-          IconButton(
-              onPressed: () async {
-                await mAuth.signOut();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (builder) => SignInScreen()),
-                    (route) => false);
-              },
-              icon: Icon(Icons.logout))
+          isCurrent
+              ? IconButton(
+                  onPressed: () async {
+                    await mAuth.signOut();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (builder) => SignInScreen()),
+                        (route) => false);
+                  },
+                  icon: Icon(Icons.logout))
+              : SizedBox()
         ],
       ),
       body: Container(

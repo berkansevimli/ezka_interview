@@ -24,6 +24,7 @@ class FirestoreServices with ChangeNotifier {
       'email': email,
       'img': 'default',
       'bio': 'default',
+      'blocks': {},
       'name': 'default',
       'firstname': 'default',
       'lastname': 'default',

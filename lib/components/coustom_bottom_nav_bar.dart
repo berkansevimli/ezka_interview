@@ -1,4 +1,6 @@
 import 'package:ezka_interview/screens/map/current_location.dart';
+import 'package:ezka_interview/screens/messages/Screens/messages_box.dart';
+import 'package:ezka_interview/screens/messages/gelenkutusu.dart';
 import 'package:ezka_interview/screens/profile_screen/model/fetch_datas.dart';
 import 'package:ezka_interview/screens/search/search_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -80,6 +82,20 @@ class CustomBottomNavBar extends StatelessWidget {
                       (route) => false);
                 },
               ),
+              IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/icons/Chat bubble Icon.svg",
+                    color: MenuState.messages == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => MessagesBoxPage()),
+                        (route) => false);
+                  }),
               IconButton(
                   icon: SvgPicture.asset(
                     "assets/icons/User Icon.svg",

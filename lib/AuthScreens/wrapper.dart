@@ -12,7 +12,6 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final user = Provider.of<User?>(context);
-
     if (user != null) {
       return HomeScreen();
     } else {

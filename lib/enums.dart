@@ -1,4 +1,4 @@
 
 
 
-enum MenuState { home, map, profile, search, }
+enum MenuState { home, map, profile, search,messages }

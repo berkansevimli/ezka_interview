@@ -38,7 +38,10 @@
 	<string>This app needs access to location when open.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app needs access to location when in the background.</string>
-
+	<key>NSCameraUsageDescription</key>
+	<string>Allow camera access so you can take and send photos using the camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library to upload your profile photo or send photo.</string>
 
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
